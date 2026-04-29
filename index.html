@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Website</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Comic Sans MS", "Trebuchet MS", cursive, sans-serif;
+      color: #fff;
+      text-align: center;
+      background:
+        repeating-linear-gradient(45deg, #25001d 0 16px, #00311c 16px 32px, #260038 32px 48px),
+        radial-gradient(circle at 23% 21%, #5a00a8 0 14%, transparent 15%),
+        radial-gradient(circle at 71% 62%, #8c1b00 0 20%, transparent 21%),
+        linear-gradient(100deg, #020214, #111129 33%, #29001f 62%, #001824);
+      background-size: 180px 180px, 260px 260px, 420px 420px, 100% 100%;
+      animation: bgPulse 2.2s infinite alternate;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    @keyframes bgPulse {
+      from { filter: saturate(1) hue-rotate(0deg) contrast(1); }
+      to { filter: saturate(1.8) hue-rotate(90deg) contrast(1.2); }
+    }
+
+    .site-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 14px 50px;
+      position: relative;
+    }
+
+    .star-line {
+      color: #00fff0;
+      letter-spacing: 5px;
+      margin: 4px 0;
+      text-shadow: 0 0 8px #ff00e6;
+      animation: blink 0.6s step-start infinite;
+    }
+
+    h1 {
+      margin: 14px 0 2px;
+      font-size: clamp(2.8rem, 9vw, 5.6rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: #ffea00;
+      text-shadow: 3px 3px 0 #ff00a8, -3px -3px 0 #00f3ff, 0 0 30px #96ff00;
+      animation: titleWobble 0.7s steps(2, end) infinite;
+    }
+
+    @keyframes titleWobble {
+      0%, 100% { transform: rotate(-2deg) scale(1) translateX(-6px); }
+      50% { transform: rotate(2deg) scale(1.06) translateX(6px); }
+    }
+
+    .badge-row {
+      display: block;
+      margin: 8px 0 14px;
+    }
+
+    .badge {
+      border: 4px dashed #fff;
+      padding: 5px 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 6px;
+      display: inline-block;
+      transform: rotate(var(--tilt, 0deg));
+      animation: spinColor 1.2s steps(2, end) infinite;
+    }
+
+    @keyframes spinColor {
+      0% { color: #ff58ea; border-color: #00ffe5; background: #542400; }
+      33% { color: #121212; border-color: #fffd4f; background: #51ff00; }
+      66% { color: #ff8b00; border-color: #ff48d5; background: #0037ff; }
+      100% { color: #ff58ea; border-color: #00ffe5; background: #542400; }
+    }
+
+    .intro-box {
+      border: 7px ridge #00f0ff;
+      background: linear-gradient(135deg, rgba(255, 0, 166, 0.8), rgba(0, 255, 163, 0.6), rgba(255, 255, 0, 0.6));
+      padding: 14px 10px;
+      margin: 8px auto 16px;
+      box-shadow: 0 0 20px #ff00ea, 0 0 30px #00d4ff;
+      transform: rotate(-1deg);
+    }
+
+    .blink {
+      animation: blink 0.9s step-start infinite;
+      font-weight: bold;
+      color: #fffc66;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .moving-text {
+      display: inline-block;
+      font-size: 1.3rem;
+      font-weight: bold;
+      animation: bounceSide 1.3s steps(2, end) infinite;
+      text-shadow: 0 0 8px #000;
+      background: #fffd4f;
+      color: #0e0e0e;
+      padding: 2px 12px;
+    }
+
+    @keyframes bounceSide {
+      0%, 100% { transform: translateX(-18px) rotate(-2deg); }
+      50% { transform: translateX(18px) rotate(2deg); }
+    }
+
+    .gif-zone {
+      margin: 8px auto;
+      padding: 16px 8px;
+      border: 8px double #ff8800;
+      background: linear-gradient(45deg, rgba(255, 0, 149, 0.62), rgba(0, 255, 255, 0.45), rgba(189, 255, 0, 0.5));
+      position: relative;
+      overflow: hidden;
+      transform: rotate(1deg);
+    }
+
+    .gif-zone h2 {
+      margin: 0 0 10px;
+      font-size: 1.7rem;
+      color: #fff200;
+      text-shadow: 2px 2px 0 #ff00ea, -2px -2px 0 #00fff7;
+    }
+
+    .gif-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      align-items: flex-start;
+    }
+
+    .gif-card {
+      border: 6px dotted #fff;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px;
+      margin: -6px 2px 10px;
+      width: min(220px, 46vw);
+      transform: rotate(var(--r, 0deg));
+      animation: floaty 1.3s ease-in-out infinite;
+    }
+
+    .gif-card:nth-child(2) { animation-delay: 0.2s; }
+    .gif-card:nth-child(3) { animation-delay: 0.5s; }
+    .gif-card:nth-child(4) { animation-delay: 0.8s; }
+
+    .gif-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      border: 3px solid #ffeb3b;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+      50% { transform: translateY(-8px) rotate(calc(var(--r, 0deg) + 2deg)); }
+    }
+
+    .counter {
+      margin-top: 8px;
+      display: inline-block;
+      background: #0a0a0a;
+      border: 4px outset #ff00cc;
+      padding: 8px 14px;
+      font-family: "Courier New", monospace;
+      letter-spacing: 2px;
+      color: #ff9d00;
+      text-shadow: 0 0 8px #ff9d00;
+      transform: rotate(-2deg);
+    }
+
+    .tiny-note {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: #ffe9a3;
+      text-shadow: 0 0 5px #000;
+    }
+
+    .footer-chaos {
+      margin-top: 20px;
+      border-top: 3px dashed #ff4ce2;
+      padding-top: 10px;
+      color: #9df5ff;
+    }
+
+    .sticker {
+      position: absolute;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 5px 8px;
+      border: 3px solid #fff;
+      animation: jitter 0.4s steps(2, end) infinite;
+      z-index: 3;
+    }
+
+    .s1 { top: 80px; left: 4px; background: #ff00b3; color: #fff800; transform: rotate(-13deg); }
+    .s2 { top: 210px; right: -8px; background: #24ff00; color: #110019; transform: rotate(18deg); }
+    .s3 { bottom: 80px; left: 10px; background: #00dbff; color: #8f002b; transform: rotate(-9deg); }
+    .s4 { bottom: 220px; right: 16px; background: #ff9100; color: #0012ff; transform: rotate(12deg); }
+
+    @keyframes jitter {
+      50% { transform: translate(2px, -1px) rotate(2deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-wrap">
+    <div class="sticker s1">LOL</div>
+    <div class="sticker s2">SO RANDOM</div>
+    <div class="sticker s3">EPIC MODE</div>
+    <div class="sticker s4">:P</div>
+    <div class="star-line">* * * * * * * * * * * * * * * * * * *</div>
+    <h1>My Website</h1>
+    <div class="star-line">* * * * * * * * * * * * * * * * * * *</div>
+
+    <marquee behavior="alternate" scrollamount="12">
+      <span class="moving-text">WELCOME 2 MY SUPER AWESOME CORNER OF THE INTERNET!!!</span>
+    </marquee>
+
+    <div class="badge-row">
+      <div class="badge" style="--tilt:-7deg;">Best Viewed In 1024x768</div>
+      <div class="badge" style="--tilt:4deg;">Powered By Pure Vibes</div>
+      <div class="badge" style="--tilt:-3deg;">Totally Not A Boring Website</div>
+      <div class="badge" style="--tilt:8deg;">HTML MASTER SINCE LIKE YESTERDAY</div>
+    </div>
+
+    <div class="intro-box">
+      <p class="blink">!!! UNDER HEAVY CONSTRUCTION !!!</p>
+      <p>
+        hi im just a random college genius and this is my EPIC website where i put
+        cool stuff, random thoughts, and too many effects because more = better.
+      </p>
+      <p>
+        shoutout to everyone on the message boards and people who still use glitter text.
+      </p>
+      <p class="blink">WARNING: TOO MANY COLORS CAN OCCUR AT ANY MOMENT</p>
+    </div>
+
+    <div class="gif-zone">
+      <h2>CRINGE GIF BLAST ZONE</h2>
+      <div class="gif-grid">
+        <figure class="gif-card" style="--r:-8deg;">
+          <img src="https://media.tenor.com/NQfq1liFH-8AAAAd/byuntear-cute.gif" alt="Dancing hamster style gif" />
+        </figure>
+        <figure class="gif-card" style="--r:11deg;">
+          <img src="https://media.tenor.com/2roX3uxz_68AAAAC/fire-flames.gif" alt="Animated flames gif" />
+        </figure>
+        <figure class="gif-card" style="--r:-13deg;">
+          <img src="https://media.tenor.com/9vRAkntogEMAAAAC/under-construction.gif" alt="Under construction sign gif" />
+        </figure>
+        <figure class="gif-card" style="--r:16deg;">
+          <img src="https://media.tenor.com/yheo1GGu3FwAAAAC/rainbow-glitter.gif" alt="Rainbow glitter gif" />
+        </figure>
+      </div>
+    </div>
+
+    <marquee direction="right" scrollamount="8">
+      <span class="blink">SIGN MY GUESTBOOK!!! SIGN MY GUESTBOOK!!!</span>
+    </marquee>
+
+    <div class="counter">Visitor Count: <span id="counter">000042</span></div>
+    <div class="tiny-note">You are visitor number probably not accurate but still legendary.</div>
+
+    <div class="footer-chaos">
+      <p><strong>Music status:</strong> imaginary midi blasting at full volume</p>
+      <p><strong>Mood:</strong> neon chaos and internet freedom forever</p>
+    </div>
+  </div>
+
+  <script>
+    const counterEl = document.getElementById("counter");
+    let count = 42;
+    setInterval(() => {
+      count += Math.floor(Math.random() * 3);
+      counterEl.textContent = String(count).padStart(6, "0");
+    }, 1500);
+
+    const movingText = document.querySelector(".moving-text");
+    const colors = ["#ff4ad8", "#090909", "#fdff79", "#003bff", "#00ff8c", "#ff2600"];
+    let i = 0;
+    setInterval(() => {
+      movingText.style.color = colors[i % colors.length];
+      movingText.style.background = colors[(i + 2) % colors.length];
+      i++;
+    }, 180);
+  </script>
+</body>
+</html>
